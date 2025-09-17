@@ -74,7 +74,9 @@ export class PreferencesService {
     if (!obj || typeof obj !== 'object') return this.defaultPrefs;
     const theme = obj.theme === 'dark' ? 'dark' : 'light';
     const autosave = typeof obj.autosave === 'boolean' ? obj.autosave : this.defaultPrefs.autosave;
-    const itemsPerPage = Number.isInteger(obj.itemsPerPage) ? obj.itemsPerPage : this.defaultPrefs.itemsPerPage;
+    const itemsPerPage = Number.isInteger(obj.itemsPerPage)
+      ? obj.itemsPerPage
+      : this.defaultPrefs.itemsPerPage;
     return { theme, autosave, itemsPerPage };
   }
 }

@@ -33,7 +33,9 @@ describe('PreferencesComponent (shallow)', () => {
 
   test('load calls service.load and updates prefs', async () => {
     // @ts-ignore
-    mockService.load = jest.fn().mockResolvedValue({ theme: 'dark', autosave: false, itemsPerPage: 10 });
+    mockService.load = jest
+      .fn()
+      .mockResolvedValue({ theme: 'dark', autosave: false, itemsPerPage: 10 });
     await component.load();
     expect(mockService.load).toHaveBeenCalled();
     expect(component.prefs?.theme).toBe('dark');

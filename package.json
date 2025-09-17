@@ -8,13 +8,15 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:lib": "tsc -p tsconfig.build.json",
+    "build:ng": "ng-packagr -p ng-package.json",
+    "pack:package": "npm run build:lib && npm pack --pack-destination dist",
+    "pack:ng": "npm run build:ng && npm pack --pack-destination dist",
     "example:decode-favicon": "node -e \"const fs=require('fs'); const b=fs.readFileSync('example/favicon.ico.base64','utf8').replace(/\\n/g,''); fs.writeFileSync('example/favicon.ico', Buffer.from(b,'base64')); console.log('example/favicon.ico written')\"",
     "example:serve": "node example/server.js",
     "example:dev": "npm run example:decode-favicon && npx esbuild example/main.ts --bundle --outfile=example/main.js --format=esm && npm run example:serve",
-    "pack:package": "npm run build:lib && npm pack --pack-destination dist",
-    "build:ng": "ng-packagr -p ng-package.json",
-  "pack:ng": "npm run build:ng && npm pack --pack-destination dist",
-  "test": "jest --config jest.config.cjs --runInBand"
+    "test": "jest --config jest.config.cjs --runInBand",
+    "format": "prettier --write \"src/**/*.{ts,html,scss}\" \"example/**/*.{ts,html,scss}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,html,scss}\" \"example/**/*.{ts,html,scss}\""
   },
   "peerDependencies": {
     "@angular/common": "^20.0.0",
@@ -28,6 +30,7 @@
   "http-server": "^14.1.1",
   "ng-packagr": "^20.3.0",
   "typescript": "^5.2.0",
+  "prettier": "^3.0.0",
   "jest": "^29.0.0",
   "ts-jest": "^29.0.0",
   "@types/jest": "^29.0.0",

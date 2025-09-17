@@ -1,0 +1,11 @@
+<div>
+  <label>
+    <input type="radio" name="source" value="local-file" (change)="choose('local-file')" checked /> Local File
+  </label>
+  <label>
+    <input type="radio" name="source" value="external-service" (change)="choose('external-service')" /> External Service
+  </label>
+  <div *ngIf="selected === 'external-service'">
+    <input placeholder="External URL" [(ngModel)]="externalUrl" />
+  </div>
+</div>

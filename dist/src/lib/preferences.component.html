@@ -1,0 +1,27 @@
+<div>
+  <h3>Preferences</h3>
+  <app-source-chooser (sourceChange)="onSourceChange($event)"></app-source-chooser>
+
+  <div *ngIf="prefs">
+    <label>
+      Theme:
+      <select [(ngModel)]="prefs.theme">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </label>
+    <br />
+    <label>
+      Autosave:
+      <input type="checkbox" [(ngModel)]="prefs.autosave" />
+    </label>
+    <br />
+    <label>
+      Items per page:
+      <input type="number" [(ngModel)]="prefs.itemsPerPage" />
+    </label>
+    <br />
+    <button (click)="load()">Load</button>
+    <button (click)="save()">Save</button>
+  </div>
+</div>
